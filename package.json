@@ -1,6 +1,6 @@
 {
   "name": "@node-net/yang",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "YANG (RFC 7950) parser, compiler and data codecs for Node.js: XML, RFC 7951 JSON, schema queries",
   "keywords": [
     "yang",
