@@ -1,0 +1,7 @@
+module mn-aug-when {
+  yang-version 1.1;
+  namespace "urn:mn-aug-when";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { when "b:x"; leaf m { type string; mandatory true; } }
+}

@@ -1,0 +1,8 @@
+module st-enum-if-feature {
+  yang-version 1.1;
+  namespace "urn:st-enum-if-feature";
+  prefix s;
+
+  feature df { status deprecated; }
+  leaf a { type enumeration { enum one; enum two { if-feature df; } } }
+}

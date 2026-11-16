@@ -1,0 +1,8 @@
+module st-ok-current {
+  yang-version 1.1;
+  namespace "urn:st-ok-current";
+  prefix s;
+
+  typedef t { type string; }
+  leaf a { status deprecated; type t; }
+}

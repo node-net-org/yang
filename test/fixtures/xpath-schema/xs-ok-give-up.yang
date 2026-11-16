@@ -1,0 +1,12 @@
+module xs-ok-give-up {
+  yang-version 1.1;
+  namespace "urn:xs-ok-give-up";
+  prefix t;
+
+  container c {
+    leaf r { type leafref { path "../x"; } }
+    leaf x { type string; }
+    anydata ad;
+    leaf y { type string; must "deref(../r)/../nope or ../*/nope or following-sibling::nope or ../ad/nope or ../t:*/nope"; }
+  }
+}

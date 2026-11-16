@@ -1,0 +1,9 @@
+module st-other-identityref {
+  yang-version 1.1;
+  namespace "urn:st-other-identityref";
+  prefix s;
+
+  import st-base { prefix b; }
+
+  leaf a { type identityref { base b:did; } }
+}

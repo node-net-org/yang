@@ -1,0 +1,25 @@
+module xp-lr-not-key {
+  yang-version 1.1;
+  namespace "urn:example:xp-lr-not-key";
+  prefix xp;
+
+  container c {
+    list item {
+      key "name kind";
+      leaf name { type string; }
+      leaf kind { type string; }
+      leaf value { type string; }
+    }
+    container box {
+      leaf name { type string; }
+      leaf v { type string; }
+    }
+    leaf s { type string; }
+    leaf k { type string; }
+    leaf ref {
+      type leafref {
+        path "../item[value = current()/../s]/name";
+      }
+    }
+  }
+}

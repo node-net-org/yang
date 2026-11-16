@@ -1,0 +1,8 @@
+submodule ex-old-sub {
+  yang-version 1;
+  belongs-to ex-old { prefix exo; }
+  revision 2026-11-01;
+  grouping sub-group {
+    leaf out { type uint32; }
+  }
+}

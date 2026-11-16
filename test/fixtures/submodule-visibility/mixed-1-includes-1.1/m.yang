@@ -1,0 +1,10 @@
+module m {
+  yang-version 1;
+  namespace "urn:m";
+  prefix m;
+  include s1;
+
+  leaf x {
+    type string;
+  }
+}

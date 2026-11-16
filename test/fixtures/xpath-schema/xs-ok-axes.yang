@@ -1,0 +1,11 @@
+module xs-ok-axes {
+  yang-version 1.1;
+  namespace "urn:xs-ok-axes";
+  prefix t;
+
+  container c {
+    container d { leaf x { type string; } }
+    leaf y { type string; must "ancestor::c/d/x and ../descendant::x and //t:x and ../d/self::d"; }
+    leaf z { type string; must "(../d | ../y)/x"; }
+  }
+}

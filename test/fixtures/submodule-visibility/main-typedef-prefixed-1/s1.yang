@@ -1,0 +1,12 @@
+submodule s1 {
+  yang-version 1;
+  belongs-to m {
+    prefix m;
+  }
+
+  grouping g {
+    leaf l {
+      type m:t;
+    }
+  }
+}

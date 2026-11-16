@@ -1,0 +1,36 @@
+<yang-library xmlns="urn:ietf:params:xml:ns:yang:ietf-yang-library" xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">
+  <module-set>
+    <name>common</name>
+    <module>
+      <name>ietf-interfaces</name>
+      <revision>2018-02-20</revision>
+      <namespace>urn:ietf:params:xml:ns:yang:ietf-interfaces</namespace>
+      <location>https://example.com/ietf-interfaces.yang</location>
+      <feature>if-mib</feature>
+      <feature>arbitrary-names</feature>
+    </module>
+    <module>
+      <name>ietf-ip</name>
+      <revision>2018-02-22</revision>
+      <namespace>urn:ietf:params:xml:ns:yang:ietf-ip</namespace>
+    </module>
+    <import-only-module>
+      <name>ietf-yang-types</name>
+      <revision>2013-07-15</revision>
+      <namespace>urn:ietf:params:xml:ns:yang:ietf-yang-types</namespace>
+    </import-only-module>
+  </module-set>
+  <schema>
+    <name>all</name>
+    <module-set>common</module-set>
+  </schema>
+  <datastore>
+    <name>ds:running</name>
+    <schema>all</schema>
+  </datastore>
+  <datastore>
+    <name>ds:operational</name>
+    <schema>all</schema>
+  </datastore>
+  <content-id>75a43df9bd56b92aacc156a2958fbe12312fb285</content-id>
+</yang-library>

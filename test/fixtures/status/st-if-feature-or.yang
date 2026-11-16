@@ -1,0 +1,9 @@
+module st-if-feature-or {
+  yang-version 1.1;
+  namespace "urn:st-if-feature-or";
+  prefix s;
+
+  feature f;
+  feature df { status deprecated; }
+  leaf a { if-feature "f or df"; type string; }
+}

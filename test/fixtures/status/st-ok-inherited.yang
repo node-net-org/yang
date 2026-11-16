@@ -1,0 +1,17 @@
+module st-ok-inherited {
+  yang-version 1.1;
+  namespace "urn:st-ok-inherited";
+  prefix s;
+
+  typedef dt { status deprecated; type string; }
+  identity did { status deprecated; }
+  feature df { status deprecated; }
+  container c {
+    status deprecated;
+    leaf a { type dt; }
+    leaf b { type identityref { base did; } }
+    leaf d { if-feature df; type string; }
+    container x { leaf y { type dt; } }
+    leaf z { type leafref { path "../a"; } must "../a"; }
+  }
+}

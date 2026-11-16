@@ -1,0 +1,13 @@
+module xs-ok-action {
+  yang-version 1.1;
+  namespace "urn:xs-ok-action";
+  prefix t;
+
+  list l {
+    key name;
+    leaf name { type string; }
+    action go {
+      input { leaf a { type string; must "../../name and ../b"; } leaf b { type string; } }
+    }
+  }
+}

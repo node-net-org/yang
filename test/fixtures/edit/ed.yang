@@ -1,0 +1,45 @@
+module ed {
+  yang-version 1.1;
+  namespace "urn:ed";
+  prefix ed;
+  description "Edit engine fixtures (test/edit), checked against sysrepo by scripts/sysrepo-edit-oracle.sh.";
+
+  identity thing;
+  identity widget { base thing; }
+  identity gadget { base thing; }
+
+  container sys {
+    leaf host { type string; }
+    leaf mtu { type uint16 { range "68..9000"; } }
+    leaf mode { type string; default "auto"; }
+    list user {
+      key name;
+      ordered-by user;
+      leaf name { type string; }
+      leaf uid { type uint32; }
+      leaf shell { type string; }
+    }
+    list iface {
+      key "name unit";
+      leaf name { type string; }
+      leaf unit { type uint8; }
+      leaf mtu { type uint16; }
+    }
+    leaf-list dns { type string; ordered-by user; }
+    leaf-list tag { type string; }
+    leaf-list kinds { type identityref { base thing; } ordered-by user; }
+    choice transport {
+      case tcp { leaf tcp-port { type uint16; } leaf keepalive { type boolean; } }
+      case udp { leaf udp-port { type uint16; } }
+      leaf local { type empty; }
+    }
+    container pres {
+      presence "enables p";
+      leaf need { type string; mandatory true; }
+      leaf extra { type string; }
+    }
+    container deep { container inner { leaf x { type string; } leaf y { type string; } } }
+    container state { config false; leaf up { type boolean; } }
+  }
+  container other { leaf z { type string; } }
+}

@@ -1,0 +1,14 @@
+module st-ok-other-inherited {
+  yang-version 1.1;
+  namespace "urn:st-ok-other-inherited";
+  prefix s;
+
+  import st-base { prefix b; }
+
+  container c {
+    status deprecated;
+    leaf a { type b:dt; }
+    uses b:dg;
+  }
+  augment /b:dc { status deprecated; leaf y { type string; } }
+}

@@ -1,0 +1,11 @@
+module xs-ok-container {
+  yang-version 1.1;
+  namespace "urn:xs-ok-container";
+  prefix t;
+
+  container c {
+    leaf x { type string; }
+    leaf y { type string; must "../x = 'a' and /t:c/x and /c/t:x and . != current()/../x"; }
+    container d { leaf z { type string; must "../../x and ../../d/z"; } }
+  }
+}

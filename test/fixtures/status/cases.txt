@@ -1,0 +1,40 @@
+# One module per case, st-<case>.yang, compiled with st-base.yang, whose
+# definitions are deprecated or obsolete. scripts/yanglint-oracle.sh and
+# scripts/pyang-oracle.sh record what yanglint and pyang say about each;
+# test/compile/status.test.ts checks that @node-net/yang reports what is given here
+# (once, at the referring statement), and compares with both.
+#   case  expected: ok or warning:<code>
+typedef                 warning:status-reference                # a current leaf uses a deprecated typedef
+typedef-obsolete        warning:status-reference                # a current leaf uses an obsolete typedef
+deprecated-to-obsolete  warning:status-reference                # a deprecated leaf uses an obsolete typedef
+typedef-chain           warning:status-reference                # a current typedef derived from a deprecated one
+union-member            warning:status-reference                # a deprecated typedef as a union member
+nested-typedef          warning:status-reference                # nested typedefs: one inherits its container's status, one has its own
+grouping                warning:status-reference                # a current uses of a deprecated grouping
+grouping-twice          warning:status-reference                # a bad reference in a grouping used twice is reported once
+identity-base           warning:status-reference                # a current identity derived from a deprecated one
+identityref             warning:status-reference                # an identityref with a deprecated base
+if-feature              warning:status-reference                # if-feature naming a deprecated feature
+if-feature-or           warning:status-reference                # a deprecated feature after 'or', which evaluation never reaches
+feature-if-feature      warning:status-reference                # a current feature's if-feature names a deprecated feature
+enum-if-feature         warning:status-reference                # an enum's if-feature names a deprecated feature
+leafref                 warning:status-reference                # a leafref to a leaf in a deprecated container
+augment                 warning:status-reference                # a current augment of a deprecated container
+must                    warning:status-reference                # a must selects a deprecated container
+when                    warning:status-reference                # a when selects a deprecated container
+ok-same-status          ok                                      # deprecated to deprecated, obsolete to deprecated
+ok-inherited            ok                                      # references from inside a deprecated container
+ok-inherited-uses       ok                                      # a uses of a deprecated grouping inside a deprecated container
+ok-in-grouping          ok                                      # references from inside a deprecated grouping
+ok-unused-grouping      ok                                      # a grouping nothing uses isn't compiled, so isn't checked
+ok-current              ok                                      # a deprecated leaf uses a current typedef
+other-typedef           warning:status-reference-other-module   # the same, into another module
+other-obsolete          warning:status-reference-other-module
+other-grouping          warning:status-reference-other-module
+other-identityref       warning:status-reference-other-module
+other-feature           warning:status-reference-other-module
+other-leafref           warning:status-reference-other-module
+other-augment           warning:status-reference-other-module
+other-when              warning:status-reference-other-module
+ok-deviation            ok                                      # deviating a deprecated node isn't a status reference
+ok-other-inherited      ok                                      # references into another module from deprecated definitions

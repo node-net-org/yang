@@ -1,0 +1,40 @@
+# One directory per case: module m and its submodules (s1, s2, s3), plus
+# module o where a submodule imports it. scripts/pyang-oracle.sh and
+# scripts/yanglint-oracle.sh record whether pyang and yanglint accept each
+# layout (compiling m); test/compile/submodule-visibility.test.ts checks that
+# @node-net/yang reports the diagnostic given here, and compares both verdicts.
+# The suffix is the yang-version of every file in the layout.
+#   case  expected: ok, or warning:<code>
+own-1                           ok
+own-1.1                         ok
+included-1                      ok
+included-1.1                    ok
+nested-1                        ok
+nested-1.1                      ok
+imported-1                      ok
+imported-1.1                    ok
+sibling-typedef-1               warning:definition-not-included
+sibling-typedef-1.1             ok
+sibling-grouping-1              warning:definition-not-included
+sibling-grouping-1.1            ok
+sibling-identity-default-1      warning:definition-not-included
+sibling-identity-default-1.1    ok
+main-typedef-1                  warning:definition-not-included
+main-typedef-1.1                ok
+main-typedef-prefixed-1         warning:definition-not-included
+main-typedef-prefixed-1.1       ok
+main-grouping-1                 warning:definition-not-included
+main-grouping-1.1               ok
+main-identity-1                 warning:definition-not-included
+main-identity-1.1               ok
+main-identityref-1              warning:definition-not-included
+main-identityref-1.1            ok
+main-feature-1                  warning:definition-not-included
+main-feature-1.1                ok
+main-extension-1                warning:definition-not-included
+main-extension-1.1              ok
+transitive-1                    warning:definition-not-included
+transitive-1.1                  ok
+module-through-submodule-1      warning:definition-not-included
+mixed-1-includes-1.1            warning:include-version-mismatch
+mixed-1.1-includes-1            warning:include-version-mismatch

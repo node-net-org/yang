@@ -1,0 +1,54 @@
+module ex-wd {
+  yang-version 1.1;
+  namespace "urn:ex-wd";
+  prefix exwd;
+
+  identity base;
+  identity one { base base; }
+
+  container top {
+    leaf a { type string; default "x"; }
+    leaf b { type uint8; default 7; }
+    leaf c { type string; }
+    leaf-list ll { type uint16; default 1; default 2; }
+    leaf-list ll2 { type string; default "q"; }
+    leaf id { type identityref { base base; } default exwd:one; }
+    container np {
+      leaf d { type boolean; default true; }
+      container deeper { leaf e { type decimal64 { fraction-digits 2; } default 1.5; } }
+    }
+    container empty-np { leaf e { type string; } }
+    container p { presence "on"; leaf f { type int8; default -1; } }
+    container q { presence "on"; leaf f { type int8; default -1; } }
+    choice ch {
+      default c1;
+      case c1 { leaf g { type string; default "g"; } }
+      case c2 { leaf h { type string; default "h"; } leaf h2 { type string; } }
+    }
+    choice ch2 {
+      case x { leaf i { type string; default "i"; } }
+      case y { leaf j { type string; } }
+    }
+    list item {
+      key k;
+      leaf k { type string; }
+      leaf v { type string; default "v"; }
+    }
+    leaf s { config false; type uint32; default 5; }
+  }
+
+  // Defaults guarded by when: their own (context: the leaf), a uses' (context: the parent),
+  // and one that waits for another default's condition.
+  container wh {
+    leaf on { type boolean; }
+    leaf w { when "../on = 'true'"; type string; default "w"; }
+    container wc { when "../on = 'true'"; leaf x { type string; default "x"; } }
+    uses g { when "on = 'true'"; }
+    uses g2 { when "../on = 'true'"; }
+    leaf b { when "../a = 'x'"; type string; default "y"; }
+    leaf a { type string; default "x"; }
+    leaf d { when "../b = 'y'"; type string; default "z"; }
+  }
+  grouping g { leaf y { type string; default "y"; } }
+  grouping g2 { leaf z { type string; default "z"; } }
+}

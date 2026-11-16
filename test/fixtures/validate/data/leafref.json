@@ -1,0 +1,39 @@
+{
+  "vx:c": {
+    "ratio": 50,
+    "ref": "zz",
+    "loose": "nowhere",
+    "iid": "/vx:c/item[name='a']/value",
+    "tag": [
+      "x",
+      "y"
+    ],
+    "item": [
+      {
+        "name": "a",
+        "value": 10,
+        "sub": {
+          "x": "p"
+        }
+      },
+      {
+        "name": "b",
+        "value": 20,
+        "sub": {
+          "x": "p"
+        }
+      }
+    ],
+    "np": {
+      "need": "yes"
+    },
+    "one-b": "b",
+    "st": {
+      "seen": [
+        "s",
+        "s"
+      ],
+      "req": "r"
+    }
+  }
+}

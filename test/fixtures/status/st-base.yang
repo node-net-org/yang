@@ -1,0 +1,15 @@
+module st-base {
+  yang-version 1.1;
+  namespace "urn:st-base";
+  prefix b;
+
+  typedef dt { status deprecated; type string; }
+  typedef ot { status obsolete; type string; }
+  identity did { status deprecated; }
+  feature df { status deprecated; }
+  grouping dg { status deprecated; leaf g { type string; } }
+  container dc {
+    status deprecated;
+    leaf x { type string; }
+  }
+}

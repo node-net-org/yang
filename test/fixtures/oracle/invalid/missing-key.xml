@@ -1,0 +1,7 @@
+<interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces" xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">
+  <interface>
+    <name>eth0</name>
+    <type>ianaift:ethernetCsmacd</type>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"><address><prefix-length>24</prefix-length></address></ipv4>
+  </interface>
+</interfaces>

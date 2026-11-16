@@ -1,0 +1,7 @@
+module mn-default-refine {
+  yang-version 1.1;
+  namespace "urn:mn-default-refine";
+  prefix a;
+  grouping g { choice ch { default x; case x { leaf m { type string; } } case y { leaf y { type string; } } } }
+  container c { uses g { refine ch/x/m { mandatory true; } } }
+}

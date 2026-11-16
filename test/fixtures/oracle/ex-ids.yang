@@ -1,0 +1,8 @@
+module ex-ids {
+  yang-version 1.1;
+  namespace "urn:ex-ids";
+  prefix ids;
+  identity thing;
+  identity widget { base thing; }
+  identity gadget { base widget; }
+}

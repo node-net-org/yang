@@ -1,0 +1,7 @@
+module mn-aug-choice {
+  yang-version 1.1;
+  namespace "urn:mn-aug-choice";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { choice q { mandatory true; leaf q1 { type string; } leaf q2 { type string; } } }
+}

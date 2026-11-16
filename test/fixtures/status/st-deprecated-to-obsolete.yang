@@ -1,0 +1,8 @@
+module st-deprecated-to-obsolete {
+  yang-version 1.1;
+  namespace "urn:st-deprecated-to-obsolete";
+  prefix s;
+
+  typedef ot { status obsolete; type string; }
+  leaf a { status deprecated; type ot; }
+}

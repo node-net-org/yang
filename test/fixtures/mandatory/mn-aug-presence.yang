@@ -1,0 +1,7 @@
+module mn-aug-presence {
+  yang-version 1.1;
+  namespace "urn:mn-aug-presence";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { container n { presence p; leaf m { type string; mandatory true; } } }
+}

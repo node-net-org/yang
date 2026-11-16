@@ -1,0 +1,10 @@
+module xs-cycle-2 {
+  yang-version 1.1;
+  namespace "urn:xs-cycle-2";
+  prefix t;
+
+  container c {
+    leaf x { type string; when "../y = 'a'"; }
+    leaf y { type string; when "../x = 'b'"; }
+  }
+}

@@ -1,0 +1,9 @@
+module xs-typo-absolute {
+  yang-version 1.1;
+  namespace "urn:xs-typo-absolute";
+  prefix t;
+
+  container c {
+    leaf y { type string; must "/t:c/t:z"; }
+  }
+}

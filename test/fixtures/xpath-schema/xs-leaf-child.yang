@@ -1,0 +1,10 @@
+module xs-leaf-child {
+  yang-version 1.1;
+  namespace "urn:xs-leaf-child";
+  prefix t;
+
+  container c {
+    leaf x { type string; }
+    leaf y { type string; must "../x/z"; }
+  }
+}

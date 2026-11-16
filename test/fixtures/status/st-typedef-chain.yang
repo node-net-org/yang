@@ -1,0 +1,9 @@
+module st-typedef-chain {
+  yang-version 1.1;
+  namespace "urn:st-typedef-chain";
+  prefix s;
+
+  typedef dt { status deprecated; type string; }
+  typedef t { type dt; }
+  leaf a { status deprecated; type t; }
+}

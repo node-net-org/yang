@@ -1,0 +1,11 @@
+module st-ok-same-status {
+  yang-version 1.1;
+  namespace "urn:st-ok-same-status";
+  prefix s;
+
+  typedef dt { status deprecated; type string; }
+  grouping dg { status deprecated; leaf g { type string; } }
+  leaf a { status deprecated; type dt; }
+  container c { status deprecated; uses dg { status deprecated; } }
+  leaf o { status obsolete; type dt; }
+}

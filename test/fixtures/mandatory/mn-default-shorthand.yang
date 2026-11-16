@@ -1,0 +1,6 @@
+module mn-default-shorthand {
+  yang-version 1.1;
+  namespace "urn:mn-default-shorthand";
+  prefix a;
+  container c { choice ch { default m; leaf m { type string; mandatory true; } leaf y { type string; } } }
+}

@@ -1,0 +1,8 @@
+module st-union-member {
+  yang-version 1.1;
+  namespace "urn:st-union-member";
+  prefix s;
+
+  typedef dt { status deprecated; type string; }
+  leaf a { type union { type int8; type dt; } }
+}

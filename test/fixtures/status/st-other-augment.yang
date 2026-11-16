@@ -1,0 +1,9 @@
+module st-other-augment {
+  yang-version 1.1;
+  namespace "urn:st-other-augment";
+  prefix s;
+
+  import st-base { prefix b; }
+
+  augment /b:dc { leaf y { type string; } }
+}

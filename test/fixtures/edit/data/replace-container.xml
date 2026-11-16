@@ -1,0 +1,1 @@
+<sys xmlns="urn:ed" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="replace"><host>z</host><user><name>c</name></user><user><name>z</name></user><user><name>a</name></user><dns>8.8.8.8</dns></sys>

@@ -1,0 +1,8 @@
+module st-identityref {
+  yang-version 1.1;
+  namespace "urn:st-identityref";
+  prefix s;
+
+  identity did { status deprecated; }
+  leaf a { type identityref { base did; } }
+}

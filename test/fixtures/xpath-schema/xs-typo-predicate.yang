@@ -1,0 +1,10 @@
+module xs-typo-predicate {
+  yang-version 1.1;
+  namespace "urn:xs-typo-predicate";
+  prefix t;
+
+  container c {
+    list l { key name; leaf name { type string; } }
+    leaf y { type string; must "../l[nmae = 'a']"; }
+  }
+}

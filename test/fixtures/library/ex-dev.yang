@@ -1,0 +1,18 @@
+module ex-dev {
+  yang-version 1.1;
+  namespace "urn:ex-dev";
+  prefix exd;
+  import ietf-interfaces { prefix if; }
+  import ietf-ip { prefix ip; }
+  revision 2026-11-09;
+  deviation "/if:interfaces/if:interface/if:description" {
+    deviate not-supported;
+  }
+  deviation "/if:interfaces/if:interface/ip:ipv4/ip:mtu" {
+    deviate replace {
+      type uint16 {
+        range "68..9000";
+      }
+    }
+  }
+}

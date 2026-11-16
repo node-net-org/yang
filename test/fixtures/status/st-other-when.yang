@@ -1,0 +1,9 @@
+module st-other-when {
+  yang-version 1.1;
+  namespace "urn:st-other-when";
+  prefix s;
+
+  import st-base { prefix b; }
+
+  leaf a { type string; when "/b:dc/b:x"; }
+}

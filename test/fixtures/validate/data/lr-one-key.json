@@ -1,0 +1,45 @@
+{
+  "vx-lr:net": {
+    "node": [
+      {
+        "site": "s1",
+        "id": 1,
+        "addr": "a1",
+        "port": [
+          {
+            "name": "p1"
+          }
+        ]
+      },
+      {
+        "site": "s1",
+        "id": 2,
+        "addr": "a2",
+        "port": [
+          {
+            "name": "p2"
+          }
+        ]
+      },
+      {
+        "site": "s2",
+        "id": 1,
+        "addr": "a3",
+        "port": [
+          {
+            "name": "p3"
+          }
+        ]
+      }
+    ],
+    "link": [
+      {
+        "name": "l1",
+        "end": {
+          "site": "s2",
+          "id": 2
+        }
+      }
+    ]
+  }
+}

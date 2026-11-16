@@ -1,0 +1,8 @@
+module st-feature-if-feature {
+  yang-version 1.1;
+  namespace "urn:st-feature-if-feature";
+  prefix s;
+
+  feature df { status deprecated; }
+  feature f { if-feature df; }
+}

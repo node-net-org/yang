@@ -1,0 +1,66 @@
+<interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces" xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">
+  <interface>
+    <name>eth0</name>
+    <description>uplink &amp; "core" &lt;1&gt;</description>
+    <type>ianaift:ethernetCsmacd</type>
+    <enabled>true</enabled>
+    <link-up-down-trap-enable>enabled</link-up-down-trap-enable>
+    <admin-status>up</admin-status>
+    <oper-status>up</oper-status>
+    <last-change>2026-11-08T12:00:00.25+13:00</last-change>
+    <if-index>2</if-index>
+    <phys-address>00:1b:21:3a:4f:5e</phys-address>
+    <higher-layer-if>vlan10</higher-layer-if>
+    <higher-layer-if>vlan20</higher-layer-if>
+    <speed>10000000000</speed>
+    <statistics>
+      <discontinuity-time>2026-11-01T00:00:00Z</discontinuity-time>
+      <in-octets>18446744073709551615</in-octets>
+      <in-unicast-pkts>12</in-unicast-pkts>
+      <in-discards>0</in-discards>
+      <out-errors>4294967295</out-errors>
+    </statistics>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+      <enabled>true</enabled>
+      <forwarding>false</forwarding>
+      <mtu>1500</mtu>
+      <address>
+        <ip>192.0.2.1</ip>
+        <prefix-length>24</prefix-length>
+        <origin>static</origin>
+      </address>
+      <address>
+        <ip>198.51.100.1</ip>
+        <netmask>255.255.255.0</netmask>
+      </address>
+      <neighbor>
+        <ip>192.0.2.2</ip>
+        <link-layer-address>00:00:5e:00:53:01</link-layer-address>
+        <origin>dynamic</origin>
+      </neighbor>
+    </ipv4>
+    <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+      <mtu>1500</mtu>
+      <address>
+        <ip>2001:db8::1</ip>
+        <prefix-length>64</prefix-length>
+        <status>preferred</status>
+      </address>
+      <dup-addr-detect-transmits>1</dup-addr-detect-transmits>
+      <autoconf>
+        <create-global-addresses>true</create-global-addresses>
+        <temporary-valid-lifetime>604800</temporary-valid-lifetime>
+      </autoconf>
+    </ipv6>
+  </interface>
+  <interface>
+    <name>vlan10</name>
+    <type>ianaift:l2vlan</type>
+    <lower-layer-if>eth0</lower-layer-if>
+    <oper-status>lower-layer-down</oper-status>
+  </interface>
+  <interface>
+    <name>vlan20</name>
+    <type>ianaift:l2vlan</type>
+  </interface>
+</interfaces>

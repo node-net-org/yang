@@ -1,0 +1,15 @@
+# Sample data converted by yanglint (scripts/yanglint-oracle.sh) and by @node-net/yang
+# (test/oracle.test.ts). One case per line:
+#   name  yanglint-type  input-file  modules-to-implement...
+interfaces    get    interfaces.xml          ietf-interfaces ietf-ip iana-if-type
+routing       get    routing.xml             ietf-interfaces ietf-routing ietf-ipv4-unicast-routing ietf-ipv6-unicast-routing iana-if-type
+yang-library  get    yang-library.xml        ietf-yang-library ietf-datastores
+ex            get    ex.xml                  ex ex-ids ex-aug
+ex-union      get    ex-union.json           ex ex-ids ex-aug
+ex-rpc        rpc    ex-rpc.xml              ex ex-ids ex-aug
+ex-reply      reply  ex-reply.xml            ex ex-ids ex-aug
+ex-action     rpc    ex-action.xml           ex ex-ids ex-aug
+ex-act-reply  reply  ex-action-reply.xml     ex ex-ids ex-aug
+ex-notif      notif  ex-notif.xml            ex ex-ids ex-aug
+ex-nested     notif  ex-nested-notif.xml     ex ex-ids ex-aug
+ex-edit       edit   ex-edit.json            ex-edit ex-ids ietf-netconf

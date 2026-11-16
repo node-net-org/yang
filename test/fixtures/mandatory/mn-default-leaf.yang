@@ -1,0 +1,6 @@
+module mn-default-leaf {
+  yang-version 1.1;
+  namespace "urn:mn-default-leaf";
+  prefix a;
+  container c { choice ch { default x; case x { leaf m { type string; mandatory true; } } case y { leaf y { type string; } } } }
+}

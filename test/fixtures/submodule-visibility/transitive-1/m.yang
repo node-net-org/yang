@@ -1,0 +1,12 @@
+module m {
+  yang-version 1;
+  namespace "urn:m";
+  prefix m;
+  include s1;
+  include s2;
+  include s3;
+
+  container c {
+    uses g;
+  }
+}

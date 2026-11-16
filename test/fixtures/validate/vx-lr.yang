@@ -1,0 +1,47 @@
+module vx-lr {
+  yang-version 1.1;
+  namespace "urn:example:vx-lr";
+  prefix lr;
+
+  // Leafrefs with several predicates and with current()/../.. paths.
+  container net {
+    list node {
+      key "site id";
+      leaf site { type string; }
+      leaf id { type uint8; }
+      leaf addr { type string; }
+      list port {
+        key name;
+        leaf name { type string; }
+      }
+    }
+    list link {
+      key name;
+      leaf name { type string; }
+      container end {
+        leaf site {
+          type leafref { path "../../../node/site"; }
+        }
+        leaf id {
+          type leafref {
+            path "../../../node[site = current()/../site]/id";
+          }
+        }
+        leaf addr {
+          type leafref {
+            path "../../../node[site = current()/../site]"
+               + "[id = current()/../id]/addr";
+          }
+        }
+        container port {
+          leaf name {
+            type leafref {
+              path "../../../../node[site = current()/../../site]"
+                 + "[id = current()/../../id]/port/name";
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+module xs-ok-list {
+  yang-version 1.1;
+  namespace "urn:xs-ok-list";
+  prefix t;
+
+  container c {
+    leaf k { type string; }
+    list l {
+      key name;
+      leaf name { type string; }
+      leaf v { type string; must "../../l[name = current()/../../k]/v and count(../../l) > 0"; }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+module xs-ok-augment {
+  yang-version 1.1;
+  namespace "urn:xs-ok-augment";
+  prefix t;
+  import xs-base { prefix b; }
+
+  augment /b:c {
+    when "b:x = 'on'";
+    leaf z { type string; must "../b:x and ../t:z and /b:c/b:y"; }
+  }
+}

@@ -1,0 +1,11 @@
+submodule s1 {
+  yang-version 1;
+  belongs-to m {
+    prefix m;
+  }
+
+  leaf l {
+    if-feature f;
+    type string;
+  }
+}

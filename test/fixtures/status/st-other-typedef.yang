@@ -1,0 +1,9 @@
+module st-other-typedef {
+  yang-version 1.1;
+  namespace "urn:st-other-typedef";
+  prefix s;
+
+  import st-base { prefix b; }
+
+  leaf a { type b:dt; }
+}

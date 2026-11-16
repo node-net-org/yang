@@ -1,0 +1,25 @@
+# One module per case, xp-<case>.yang, each with one XPath problem (or none).
+# scripts/pyang-oracle.sh and scripts/yanglint-oracle.sh record whether pyang and yanglint
+# reject each; test/xpath/check.test.ts checks that @node-net/yang reports the code given here,
+# and agrees with both.
+#   case  expected-code-or-ok
+ok               ok
+syntax           xpath-syntax
+unbalanced       xpath-syntax
+axis             xpath-syntax
+prefix           xpath-unknown-prefix
+function         xpath-unknown-function
+arguments        xpath-arguments
+variable         xpath-unknown-variable
+identity-prefix  xpath-unknown-prefix
+path-literal     invalid-path
+path-predicate   invalid-path
+path-no-up       invalid-path
+lr-ok            ok
+lr-not-list      leafref-invalid-predicate
+lr-no-key        leafref-invalid-predicate
+lr-not-key       leafref-invalid-predicate
+lr-key-twice     leafref-invalid-predicate
+lr-key-path      leafref-invalid-predicate
+lr-key-too-high  leafref-invalid-predicate
+lr-key-not-leaf  leafref-invalid-predicate

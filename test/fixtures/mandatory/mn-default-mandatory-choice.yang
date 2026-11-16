@@ -1,0 +1,6 @@
+module mn-default-mandatory-choice {
+  yang-version 1.1;
+  namespace "urn:mn-default-mandatory-choice";
+  prefix a;
+  container c { choice ch { default x; case x { choice in { mandatory true; leaf i { type string; } leaf j { type string; } } } case y { leaf y { type string; } } } }
+}

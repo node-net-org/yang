@@ -1,0 +1,7 @@
+module mn-default-augment {
+  yang-version 1.1;
+  namespace "urn:mn-default-augment";
+  prefix a;
+  container c { choice ch { default x; case x { leaf a { type string; } } case y { leaf y { type string; } } } }
+  augment /a:c/a:ch/a:x { leaf m { type string; mandatory true; } }
+}

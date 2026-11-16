@@ -1,0 +1,17 @@
+module xs-ok-rpc {
+  yang-version 1.1;
+  namespace "urn:xs-ok-rpc";
+  prefix t;
+
+  container c { leaf x { type string; } }
+  rpc r {
+    input {
+      leaf a { type string; must "../b or /c/x"; }
+      leaf b { type string; }
+    }
+    output {
+      leaf o { type string; must "../p and /t:c/t:x"; }
+      leaf p { type string; }
+    }
+  }
+}

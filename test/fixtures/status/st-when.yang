@@ -1,0 +1,11 @@
+module st-when {
+  yang-version 1.1;
+  namespace "urn:st-when";
+  prefix s;
+
+  container dc {
+    status deprecated;
+    leaf x { type string; }
+  }
+  leaf a { type string; when "/dc/x"; }
+}

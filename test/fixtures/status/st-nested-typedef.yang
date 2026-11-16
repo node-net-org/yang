@@ -1,0 +1,19 @@
+module st-nested-typedef {
+  yang-version 1.1;
+  namespace "urn:st-nested-typedef";
+  prefix s;
+
+  container c {
+    status deprecated;
+    typedef nt { type string; }
+    container d { leaf a { type nt; } }
+  }
+  grouping g {
+    status deprecated;
+    typedef gt { type string; }
+  }
+  container e {
+    typedef et { status deprecated; type string; }
+    leaf b { type et; }
+  }
+}

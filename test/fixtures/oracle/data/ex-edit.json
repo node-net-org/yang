@@ -1,0 +1,18 @@
+{
+  "ex-edit:sys": {
+    "@": { "ietf-netconf:operation": "merge" },
+    "host": "r1",
+    "mtu": 1500,
+    "@mtu": { "ietf-netconf:operation": "delete" },
+    "kind": "ex-ids:gadget",
+    "user": [
+      { "name": "bob", "uid": 7, "@": { "yang:insert": "after", "yang:key": "[name='alice']" } },
+      { "name": "carl", "@": { "ietf-netconf:operation": "delete" } },
+      { "name": "dora", "@": { "yang:insert": "first", "ietf-netconf:operation": "create" } }
+    ],
+    "dns": ["8.8.8.8", "9.9.9.9"],
+    "@dns": [{ "yang:insert": "before", "yang:value": "1.1.1.1" }, null],
+    "kinds": ["ex-ids:widget"],
+    "@kinds": [{ "yang:insert": "after", "yang:value": "ex-ids:gadget" }]
+  }
+}

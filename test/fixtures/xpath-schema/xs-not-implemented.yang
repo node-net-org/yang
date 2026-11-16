@@ -1,0 +1,10 @@
+module xs-not-implemented {
+  yang-version 1.1;
+  namespace "urn:xs-not-implemented";
+  prefix t;
+  import xs-other { prefix o; }
+
+  container c {
+    leaf y { type string; must "/o:o/o:x"; }
+  }
+}

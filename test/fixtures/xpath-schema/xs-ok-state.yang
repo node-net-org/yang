@@ -1,0 +1,10 @@
+module xs-ok-state {
+  yang-version 1.1;
+  namespace "urn:xs-ok-state";
+  prefix t;
+
+  container c {
+    leaf x { type string; }
+    container st { config false; leaf s { type string; must "../../x and ../s"; } }
+  }
+}

@@ -1,0 +1,6 @@
+module mn-default-nested-choice {
+  yang-version 1.1;
+  namespace "urn:mn-default-nested-choice";
+  prefix a;
+  container c { choice ch { default x; case x { choice in { case i { leaf m { type string; mandatory true; } } case j { leaf j { type string; } } } } case y { leaf y { type string; } } } }
+}

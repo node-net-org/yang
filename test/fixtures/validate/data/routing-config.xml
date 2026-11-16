@@ -1,0 +1,41 @@
+<interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+  <interface>
+    <name>eth0</name>
+    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+    <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+      <mtu>1500</mtu>
+      <address><ip>192.0.2.1</ip><prefix-length>24</prefix-length></address>
+      <neighbor><ip>192.0.2.254</ip><link-layer-address>00:00:5e:00:53:01</link-layer-address></neighbor>
+    </ipv4>
+    <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+      <address><ip>2001:db8::2</ip><prefix-length>64</prefix-length></address>
+    </ipv6>
+  </interface>
+  <interface>
+    <name>lo0</name>
+    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:softwareLoopback</type>
+  </interface>
+</interfaces>
+<routing xmlns="urn:ietf:params:xml:ns:yang:ietf-routing" xmlns:rt="urn:ietf:params:xml:ns:yang:ietf-routing">
+  <router-id>192.0.2.1</router-id>
+  <control-plane-protocols>
+    <control-plane-protocol>
+      <type>rt:static</type>
+      <name>st0</name>
+      <static-routes>
+        <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ipv4-unicast-routing">
+          <route>
+            <destination-prefix>0.0.0.0/0</destination-prefix>
+            <next-hop><next-hop-address>192.0.2.254</next-hop-address></next-hop>
+          </route>
+        </ipv4>
+        <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ipv6-unicast-routing">
+          <route>
+            <destination-prefix>::/0</destination-prefix>
+            <next-hop><outgoing-interface>eth0</outgoing-interface><next-hop-address>2001:db8::1</next-hop-address></next-hop>
+          </route>
+        </ipv6>
+      </static-routes>
+    </control-plane-protocol>
+  </control-plane-protocols>
+</routing>

@@ -1,0 +1,12 @@
+# With-defaults cases for scripts/yanglint-oracle.sh: yanglint -t data -d <mode>
+# (no -d for explicit) over ex-wd.yang and ietf-netconf-with-defaults.
+# name             mode         input
+wd-explicit        explicit     ex-wd.xml
+wd-all             all          ex-wd.xml
+wd-tagged          all-tagged   ex-wd.xml
+wd-trim            trim         ex-wd.xml
+wd-np-explicit     explicit     ex-wd-np.xml
+wd-np-all          all          ex-wd-np.xml
+wd-np-tagged       all-tagged   ex-wd-np.xml
+wd-when-on         all          ex-wd-when-on.xml
+wd-when-off        all          ex-wd-when-off.xml

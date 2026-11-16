@@ -1,0 +1,11 @@
+module xs-grouping-one-place {
+  yang-version 1.1;
+  namespace "urn:xs-grouping-one-place";
+  prefix t;
+
+  grouping g {
+    leaf v { type string; must "../k"; }
+  }
+  container a { leaf k { type string; } uses g; }
+  container b { uses g; }
+}

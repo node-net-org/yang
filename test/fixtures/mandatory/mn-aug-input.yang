@@ -1,0 +1,7 @@
+module mn-aug-input {
+  yang-version 1.1;
+  namespace "urn:mn-aug-input";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:r/b:input { leaf m { type string; mandatory true; } }
+}

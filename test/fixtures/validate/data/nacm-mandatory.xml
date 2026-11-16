@@ -1,0 +1,23 @@
+<nacm xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-acm">
+  <enable-nacm>true</enable-nacm>
+  <read-default>permit</read-default>
+  <groups>
+    <group><name>admin</name><user-name>operator1</user-name></group>
+  </groups>
+  <rule-list>
+    <name>admin-acl</name>
+    <group>admin</group>
+    <rule>
+      <name>deny-interfaces-writes</name>
+      <module-name>ietf-interfaces</module-name>
+      <path xmlns:if="urn:ietf:params:xml:ns:yang:ietf-interfaces">/if:interfaces</path>
+      <access-operations>create update delete</access-operations>
+      <action>deny</action>
+    </rule>
+    <rule>
+      <name>other</name>
+      <module-name>*</module-name>
+      <access-operations>*</access-operations>
+    </rule>
+  </rule-list>
+</nacm>

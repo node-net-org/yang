@@ -1,0 +1,1 @@
+<sys xmlns="urn:ed" xmlns:ed="urn:ed" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:yang="urn:ietf:params:xml:ns:yang:1" nc:operation="replace"><user><name>c</name></user><user yang:insert="first"><name>a</name></user><user yang:insert="after" yang:key="[ed:name='c']"><name>b</name></user></sys>

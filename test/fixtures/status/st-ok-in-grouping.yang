@@ -1,0 +1,12 @@
+module st-ok-in-grouping {
+  yang-version 1.1;
+  namespace "urn:st-ok-in-grouping";
+  prefix s;
+
+  typedef dt { status deprecated; type string; }
+  grouping g {
+    status deprecated;
+    leaf a { type dt; }
+  }
+  container c { status deprecated; uses g { status deprecated; } }
+}

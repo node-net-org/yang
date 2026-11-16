@@ -1,0 +1,28 @@
+module xp-syntax {
+  yang-version 1.1;
+  namespace "urn:example:xp-syntax";
+  prefix xp;
+
+  import ietf-interfaces { prefix if; }
+
+  identity base;
+  identity one { base base; }
+
+  container c {
+    leaf s {
+      type string;
+    }
+    leaf id {
+      type identityref { base base; }
+    }
+    leaf ref {
+      type leafref {
+        path "/if:interfaces/if:interface/if:name";
+      }
+    }
+    leaf x {
+      type string;
+      must "../s = ";
+    }
+  }
+}

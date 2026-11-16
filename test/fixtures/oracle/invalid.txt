@@ -1,0 +1,20 @@
+# Invalid data that yanglint rejects (scripts/yanglint-oracle.sh records it) and
+# @node-net/yang must reject too, with the issue code and path given (test/oracle.test.ts).
+# Modules: ietf-interfaces ietf-ip iana-if-type. One case per line:
+#   input-file  issue-code  issue-path
+# yanglint -t get parses without validating, so it accepts duplicate.xml: it
+# finds duplicate leaves only when validating a whole datastore.
+prefix-length.xml               invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/ietf-ip:ipv4/address[ip='192.0.2.1']/prefix-length
+ip-pattern.xml                  invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/ietf-ip:ipv4/address/ip
+namespace.xml                   wrong-namespace  /ietf-interfaces:interfaces/interface[name='eth0']/ipv4
+unknown.xml                     unknown-node     /ietf-interfaces:interfaces/interface[name='eth0']/unknown-leaf
+boolean.xml                     invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/enabled
+missing-key.xml                 missing-key      /ietf-interfaces:interfaces/interface[name='eth0']/ietf-ip:ipv4/address
+identity.xml                    invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/type
+duplicate.xml                   duplicate-node   /ietf-interfaces:interfaces/interface[name='eth0']/description
+json-number-as-string.json      invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/ietf-ip:ipv4/mtu
+json-int64-as-number.json       invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/speed
+json-unqualified-top.json       unknown-node     /interfaces
+json-unqualified-augment.json   wrong-namespace  /ietf-interfaces:interfaces/interface[name='eth0']/ipv4
+json-empty-as-null.json         invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/enabled
+json-identity-unqualified.json  invalid-value    /ietf-interfaces:interfaces/interface[name='eth0']/type

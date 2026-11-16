@@ -1,0 +1,9 @@
+module xs-descendant {
+  yang-version 1.1;
+  namespace "urn:xs-descendant";
+  prefix t;
+
+  container c {
+    leaf y { type string; must "../descendant::nope"; }
+  }
+}

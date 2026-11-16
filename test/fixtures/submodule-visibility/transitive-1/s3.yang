@@ -1,0 +1,10 @@
+submodule s3 {
+  yang-version 1;
+  belongs-to m {
+    prefix m;
+  }
+
+  typedef t {
+    type string;
+  }
+}

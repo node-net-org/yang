@@ -1,0 +1,11 @@
+module xs-action-typo {
+  yang-version 1.1;
+  namespace "urn:xs-action-typo";
+  prefix t;
+
+  list l {
+    key name;
+    leaf name { type string; }
+    action go { input { leaf a { type string; must "../../nmae"; } } }
+  }
+}

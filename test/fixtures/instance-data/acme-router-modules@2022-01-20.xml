@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instance-data-set xmlns="urn:ietf:params:xml:ns:yang:ietf-yang-instance-data">
+  <name>acme-router-modules</name>
+  <content-schema>
+    <inline-yang-library>
+      <modules-state xmlns="urn:ietf:params:xml:ns:yang:ietf-yang-library">
+        <module>
+          <name>ietf-yang-library</name>
+          <revision>2019-01-04</revision>
+        </module>
+        <module>
+          <name>ietf-netconf-monitoring</name>
+          <revision>2010-10-04</revision>
+        </module>
+      </modules-state>
+    </inline-yang-library>
+  </content-schema>
+  <revision>
+    <date>2020-10-23</date>
+    <description>Initial version</description>
+  </revision>
+  <description>Defines the minimal set of modules that any acme-router will contain. This minimal set will only change when a new software release is introduced.</description>
+  <contact>info@acme.example.com</contact>
+  <content-data>
+    <modules-state xmlns="urn:ietf:params:xml:ns:yang:ietf-yang-library">
+      <module>
+        <name>ietf-yang-library</name>
+        <revision>2019-01-04</revision>
+        <namespace>urn:ietf:params:xml:ns:yang:ietf-yang-library</namespace>
+        <conformance-type>implement</conformance-type>
+      </module>
+      <module>
+        <name>ietf-system</name>
+        <revision>2014-08-06</revision>
+       <namespace>urn:ietf:params:xml:ns:yang:ietf-system</namespace>
+        <feature>sys:authentication</feature>
+        <feature>sys:local-users</feature>
+        <deviation>
+          <name>acme-system-ext</name>
+          <revision>2018-08-06</revision>
+        </deviation>
+        <conformance-type>implement</conformance-type>
+      </module>
+      <module>
+        <name>ietf-netconf-monitoring</name>
+        <revision>2010-10-04</revision>
+        <namespace>urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring</namespace>
+        <conformance-type>implement</conformance-type>
+      </module>
+      <module>
+        <name>ietf-yang-types</name>
+        <revision>2013-07-15</revision>
+        <namespace>urn:ietf:params:xml:ns:yang:ietf-yang-types</namespace>
+        <conformance-type>import</conformance-type>
+      </module>
+      <module>
+        <name>acme-system-ext</name>
+        <revision>2018-08-06</revision>
+        <namespace>urn:rdns:acme.example.com:oammodel:acme-system-ext</namespace>
+        <conformance-type>implement</conformance-type>
+      </module>
+    </modules-state>
+    <netconf-state xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring">
+      <capabilities>
+        <capability>urn:ietf:params:netconf:capability:validate:1.1</capability>
+      </capabilities>
+    </netconf-state>
+  </content-data>
+</instance-data-set>

@@ -1,0 +1,1 @@
+{"ietf-interfaces:interfaces": {"interface": [{"name": "eth0", "type": "iana-if-type:ethernetCsmacd", "ipv4": {"mtu": 1500}}]}}

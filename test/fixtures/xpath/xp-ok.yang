@@ -1,0 +1,29 @@
+module xp-ok {
+  yang-version 1.1;
+  namespace "urn:example:xp-ok";
+  prefix xp;
+
+  import ietf-interfaces { prefix if; }
+
+  identity base;
+  identity one { base base; }
+
+  container c {
+    leaf s {
+      type string;
+    }
+    leaf id {
+      type identityref { base base; }
+    }
+    leaf ref {
+      type leafref {
+        path "/if:interfaces/if:interface/if:name";
+      }
+    }
+    leaf x {
+      type string;
+      must "derived-from-or-self(../id, 'xp:base') or re-match(., '[a-z]+') or deref(../ref)/../if:enabled = 'true'";
+      when "count(/if:interfaces/if:interface[if:name = current()/../s]) > 0";
+    }
+  }
+}

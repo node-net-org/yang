@@ -1,0 +1,41 @@
+# One module per case, mn-<case>.yang, each adding a mandatory node to another
+# module (mn-base) with an augment, or putting one under a choice's default case
+# (or not). scripts/pyang-oracle.sh and scripts/yanglint-oracle.sh record whether
+# pyang and yanglint reject each, compiled with mn-base; test/compile/mandatory.test.ts
+# checks that @node-net/yang reports the code given here, and agrees with both.
+#   case  expected: ok, an error code, or warning:<code>
+aug-leaf                  augment-adds-mandatory
+aug-min                   augment-adds-mandatory
+aug-list                  augment-adds-mandatory
+aug-list-inside           ok
+aug-choice                augment-adds-mandatory
+aug-container             augment-adds-mandatory
+aug-presence              ok
+aug-case                  ok
+aug-shorthand-case        ok
+aug-when                  ok
+aug-when-1.0              warning:augment-adds-mandatory
+aug-1.0                   augment-adds-mandatory
+aug-state                 ok
+aug-state-1.0             ok
+aug-config-false          ok
+aug-input                 ok
+aug-notification          ok
+aug-refine                augment-adds-mandatory
+aug-refine-off            ok
+aug-deviation             augment-adds-mandatory
+aug-deviation-off         ok
+default-leaf              mandatory-in-default-case
+default-shorthand         mandatory-in-default-case
+default-other-case        ok
+default-min               mandatory-in-default-case
+default-container         mandatory-in-default-case
+default-presence          ok
+default-nested-choice     ok
+default-mandatory-choice  mandatory-in-default-case
+default-augment           mandatory-in-default-case
+default-refine            mandatory-in-default-case
+default-refine-off        ok
+default-refine-default    mandatory-in-default-case
+default-deviation         mandatory-in-default-case
+default-deviation-off     ok

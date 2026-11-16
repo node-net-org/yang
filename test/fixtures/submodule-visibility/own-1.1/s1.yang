@@ -1,0 +1,15 @@
+submodule s1 {
+  yang-version 1.1;
+  belongs-to m {
+    prefix m;
+  }
+
+  typedef t {
+    type string;
+  }
+  grouping g {
+    leaf l {
+      type t;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+module mn-aug-deviation {
+  yang-version 1.1;
+  namespace "urn:mn-aug-deviation";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { leaf m { type string; } }
+  deviation /b:c/a:m { deviate add { mandatory true; } }
+}

@@ -1,0 +1,8 @@
+# Module files the library fixtures use: the corpus files named here, plus
+# the fixtures in this directory. Both yanglint and the tests read only these.
+ietf/RFC/ietf-interfaces@2018-02-20.yang
+ietf/RFC/ietf-ip@2018-02-22.yang
+iana/iana-if-type@2023-01-26.yang
+ietf/RFC/ietf-yang-types@2013-07-15.yang
+ietf/RFC/ietf-yang-types@2010-09-24.yang
+ietf/RFC/ietf-inet-types@2013-07-15.yang

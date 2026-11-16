@@ -1,0 +1,8 @@
+module st-augment {
+  yang-version 1.1;
+  namespace "urn:st-augment";
+  prefix s;
+
+  container dc { status deprecated; }
+  augment /dc { leaf y { type string; } }
+}

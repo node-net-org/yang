@@ -1,0 +1,1 @@
+<sys xmlns="urn:ed"><host>h</host><mtu>1500</mtu><user><name>a</name><uid>1</uid></user><user><name>b</name></user><user><name>c</name></user><iface><name>eth</name><unit>0</unit><mtu>1500</mtu></iface><dns>1.1.1.1</dns><dns>8.8.8.8</dns><tag>x</tag><kinds xmlns:ed="urn:ed">ed:widget</kinds><tcp-port>22</tcp-port></sys>

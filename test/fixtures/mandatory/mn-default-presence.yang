@@ -1,0 +1,6 @@
+module mn-default-presence {
+  yang-version 1.1;
+  namespace "urn:mn-default-presence";
+  prefix a;
+  container c { choice ch { default x; case x { container n { presence p; leaf m { type string; mandatory true; } } } case y { leaf y { type string; } } } }
+}

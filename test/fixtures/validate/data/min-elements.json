@@ -1,0 +1,21 @@
+{
+  "vx:c": {
+    "ratio": 50,
+    "loose": "nowhere",
+    "tag": [
+      "x",
+      "y"
+    ],
+    "np": {
+      "need": "yes"
+    },
+    "one-b": "b",
+    "st": {
+      "seen": [
+        "s",
+        "s"
+      ],
+      "req": "r"
+    }
+  }
+}

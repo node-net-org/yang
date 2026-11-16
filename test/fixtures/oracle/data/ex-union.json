@@ -1,0 +1,12 @@
+{
+  "ex:c": {
+    "u": "12",
+    "u2": "12",
+    "s": "1",
+    "idr": "ex-ids:widget",
+    "ii": "/ex:c/ex-aug:more/deep",
+    "lls": ["b", "a"],
+    "@lls": [{"ex:note": "first"}],
+    "@": {"ex:weight": 3}
+  }
+}

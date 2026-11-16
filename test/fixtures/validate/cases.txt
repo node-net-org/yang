@@ -1,0 +1,49 @@
+# Validation cases over vx.yang: test/validate/oracle.test.ts validates each with @node-net/yang,
+# and scripts/yanglint-oracle.sh records whether yanglint accepts it and the path it reports.
+#   name  yanglint-type  input  operational-input  expected-code  expected-path
+# yanglint-type: data (a datastore with state data), config (running), rpc, reply, notif.
+valid                   data                    valid.json              -                       ok                      -
+must                    data                    must.json               -                       must-violation          /vx:c/ratio
+when                    data                    when.json               -                       when-false              /vx:c/advanced-x
+when-ok                 data                    when-ok.json            -                       ok                      -
+leafref                 data                    leafref.json            -                       missing-instance        /vx:c/ref
+leafref-predicate       data                    leafref-predicate.json  -                       missing-instance        /vx:c/val
+iid                     data                    iid.json                -                       missing-instance        /vx:c/iid
+unique                  data                    unique.json             -                       not-unique              /vx:c/item[name='b']
+unique-partial          data                    unique-partial.json     -                       ok                      -
+max-elements            data                    max-elements.json       -                       too-many-elements       /vx:c/tag
+min-elements            data                    min-elements.json       -                       too-few-elements        /vx:c/item
+mandatory-np            data                    mandatory-np.json       -                       missing-mandatory       /vx:c/np/need
+mandatory-presence      data                    mandatory-presence.json  -                       missing-mandatory       /vx:c/pres/need
+presence-ok             data                    presence-ok.json        -                       ok                      -
+choice                  data                    choice.json             -                       missing-choice          /vx:c
+case-mandatory          data                    case-mandatory.json     -                       missing-mandatory       /vx:c/one-b
+two-cases               data                    two-cases.json          -                       multiple-cases          /vx:c
+leaf-list-duplicate     data                    leaf-list-duplicate.json  -                       duplicate-entry         /vx:c/tag[.='x']
+list-must               data                    list-must.json          -                       must-violation          /vx:c/item[name='a']
+state-mandatory         data                    state-mandatory.json    -                       missing-mandatory       /vx:c/st/req
+config                  config                  config.json             -                       ok                      -
+config-as-data          data                    config-as-data.json     -                       missing-mandatory       /vx:c/st/req
+rpc                     rpc                     rpc.json                -                       ok                      -
+rpc-must                rpc                     rpc-must.json           -                       must-violation          /vx:go/n
+rpc-mandatory           rpc                     rpc-mandatory.json      -                       missing-mandatory       /vx:go/n
+rpc-leafref             rpc                     rpc-leafref.json        -                       missing-instance        /vx:go/target
+rpc-leafref-op          rpc                     rpc-leafref-op.json     valid.json              ok                      -
+rpc-leafref-op-bad      rpc                     rpc-leafref-op-bad.json  valid.json              missing-instance        /vx:go/target
+reply-mandatory         reply                   reply-mandatory.json    -                       missing-mandatory       /vx:go/res
+notif                   notif                   notif.json              -                       ok                      -
+notif-mandatory         notif                   notif-mandatory.json    -                       missing-mandatory       /vx:ev/why
+union-leafref           data                    union-leafref.json      -                       ok                      -
+union-enum              data                    union-enum.json         -                       ok                      -
+union-leafref-missing   data                    union-leafref-missing.json  -                     missing-instance        /vx:c/either
+# Real-world modules, from the corpus (data/<case>.modules lists the files).
+routing-config          config                  routing-config.xml      -                       ok                      -
+routing-when            config                  routing-when.xml        -                       when-false              /ietf-routing:routing/control-plane-protocols/control-plane-protocol[type='ietf-routing:direct'][name='st0']/static-routes
+routing-leafref         config                  routing-leafref.xml     -                       missing-instance        /ietf-routing:routing/control-plane-protocols/control-plane-protocol[type='ietf-routing:static'][name='st0']/static-routes/ietf-ipv6-unicast-routing:ipv6/route[destination-prefix='::/0']/next-hop/outgoing-interface
+nacm-config             config                  nacm-config.xml         -                       ok                      -
+nacm-mandatory          config                  nacm-mandatory.xml      -                       missing-mandatory       /ietf-netconf-acm:nacm/rule-list[name='admin-acl']/rule[name='other']/action
+nacm-cases              config                  nacm-cases.xml          -                       multiple-cases          /ietf-netconf-acm:nacm/rule-list[name='admin-acl']/rule[name='other']
+lr-ok                   data                    lr-ok.json              -                       ok                      -
+lr-two-keys             data                    lr-two-keys.json        -                       missing-instance        /vx-lr:net/link[name='l1']/end/addr
+lr-climb                data                    lr-climb.json           -                       missing-instance        /vx-lr:net/link[name='l1']/end/port/name
+lr-one-key              data                    lr-one-key.json         -                       missing-instance        /vx-lr:net/link[name='l1']/end/id

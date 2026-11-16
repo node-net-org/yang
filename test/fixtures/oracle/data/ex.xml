@@ -1,0 +1,48 @@
+<c xmlns="urn:ex" xmlns:ex="urn:ex" xmlns:i="urn:ex-ids">
+  <s ex:note="a note">text with  spaces</s>
+  <i8>-128</i8>
+  <u32>4294967295</u32>
+  <i64>-9223372036854775808</i64>
+  <u64>18446744073709551615</u64>
+  <d>-0.500</d>
+  <bool>false</bool>
+  <e ex:weight="12"/>
+  <en>down</en>
+  <b>three two</b>
+  <bin>AQIDBAU=</bin>
+  <idr>i:gadget</idr>
+  <ii>/ex:c/ex:l[ex:k1='a b'][ex:k2='7']/ex:inner/ex:x</ii>
+  <u>-12</u>
+  <u2>unlimited</u2>
+  <lr>a b</lr>
+  <ll>1</ll>
+  <ll ex:note="second">2</ll>
+  <ll>3</ll>
+  <lls>z</lls>
+  <lls>a</lls>
+  <l ex:big="-5">
+    <k1>a b</k1>
+    <k2>7</k2>
+    <v>vee</v>
+    <inner><x>deep</x></inner>
+  </l>
+  <l>
+    <k1>c</k1>
+    <k2>0</k2>
+  </l>
+  <ids>
+    <id>i:widget</id>
+  </ids>
+  <ids>
+    <id>ex:local-thing</id>
+  </ids>
+  <cb>case b</cb>
+  <p/>
+  <extra xmlns="urn:ex-aug">augmented</extra>
+  <more xmlns="urn:ex-aug"><deep>-1</deep></more>
+</c>
+<state xmlns="urn:ex">
+  <counter>42</counter>
+</state>
+<top xmlns="urn:ex"><name>one</name></top>
+<top xmlns="urn:ex"><name>two</name></top>

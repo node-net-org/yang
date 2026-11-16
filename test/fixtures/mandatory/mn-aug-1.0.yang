@@ -1,0 +1,7 @@
+module mn-aug-1.0 {
+  yang-version 1;
+  namespace "urn:mn-aug-1.0";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { leaf m { type string; mandatory true; } }
+}

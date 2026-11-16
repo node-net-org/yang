@@ -1,0 +1,8 @@
+module mn-aug-refine-off {
+  yang-version 1.1;
+  namespace "urn:mn-aug-refine-off";
+  prefix a;
+  import mn-base { prefix b; }
+  grouping g { leaf m { type string; mandatory true; } }
+  augment /b:c { uses g { refine m { mandatory false; } } }
+}

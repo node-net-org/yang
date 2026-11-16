@@ -1,0 +1,17 @@
+module ex-old {
+  yang-version 1;
+  namespace "urn:ex-old";
+  prefix exo;
+  import ietf-yang-types { prefix yang; revision-date 2010-09-24; }
+  include ex-old-sub;
+  revision 2026-11-09;
+  feature fast;
+  feature slow;
+  container counters {
+    config false;
+    leaf in { type yang:counter32; }
+    leaf turbo { if-feature fast; type boolean; }
+    leaf crawl { if-feature slow; type boolean; }
+    uses sub-group;
+  }
+}

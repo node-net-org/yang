@@ -1,0 +1,1 @@
+<sys xmlns="urn:ed" xmlns:ed="urn:ed" xmlns:yang="urn:ietf:params:xml:ns:yang:1"><user yang:insert="before" yang:key="[ed:name='b']"><name>d</name></user></sys>

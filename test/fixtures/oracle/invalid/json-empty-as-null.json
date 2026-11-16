@@ -1,0 +1,1 @@
+{"ietf-interfaces:interfaces": {"interface": [{"name": "eth0", "type": "iana-if-type:ethernetCsmacd", "ietf-ip:ipv4": {"address": [{"ip": "192.0.2.1", "prefix-length": 24}]}, "enabled": null}]}}

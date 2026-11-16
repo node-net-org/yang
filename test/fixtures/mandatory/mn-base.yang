@@ -1,0 +1,12 @@
+module mn-base {
+  yang-version 1.1;
+  namespace "urn:mn-base";
+  prefix b;
+  container c {
+    leaf x { type string; }
+    choice ch { case k { leaf k { type string; } } }
+  }
+  container st { config false; leaf x { type string; } }
+  rpc r { input { leaf x { type string; } } }
+  notification n { leaf x { type string; } }
+}

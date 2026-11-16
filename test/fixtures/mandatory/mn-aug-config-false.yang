@@ -1,0 +1,7 @@
+module mn-aug-config-false {
+  yang-version 1.1;
+  namespace "urn:mn-aug-config-false";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { leaf m { type string; mandatory true; config false; } }
+}

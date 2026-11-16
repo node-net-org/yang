@@ -1,0 +1,8 @@
+module st-typedef-obsolete {
+  yang-version 1.1;
+  namespace "urn:st-typedef-obsolete";
+  prefix s;
+
+  typedef ot { status obsolete; type string; }
+  leaf a { type ot; }
+}

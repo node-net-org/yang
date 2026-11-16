@@ -1,0 +1,41 @@
+# Edit cases over ed.yang: test/edit/oracle.test.ts applies each edit (data/<edit>.xml) to its start
+# data (data/<start>.xml) with @node-net/yang, and scripts/sysrepo-edit-oracle.sh with sysrepo's
+# sysrepocfg --edit (merge default operation, result validated as <running> is).
+#   name                  start         edit                  expected (ok, or @node-net/yang's issue code)
+merge                   start         merge                 ok
+merge-keys              start         merge-keys            ok
+merge-order             start         merge-order           ok
+replace-entry           start         replace-entry         ok
+replace-container       start         replace-container     ok
+replace-insert          start         replace-insert        ok
+create                  start         create                ok
+create-exists           start         create-exists         data-exists
+create-entry-exists     start         create-entry-exists   data-exists
+create-inherited        start         create-inherited      data-exists
+create-default          start         create-default        ok
+delete                  start         delete                ok
+delete-missing          start         delete-missing        data-missing
+delete-default          start         delete-default        data-missing
+delete-other-value      start         delete-other-value    ok
+delete-top              start         delete-top            data-missing
+remove-missing          start         remove-missing        ok
+empty-container         start-deep    empty-container       ok
+insert-first            start         insert-first          ok
+insert-before           start         insert-before         ok
+insert-after            start         insert-after          ok
+move-first              start         move-first            ok
+move-last               start         move-last             ok
+move-replace            start         move-replace          ok
+move-self               start         move-self             invalid-edit
+missing-anchor          start         missing-anchor        missing-anchor
+leaf-list-after         start         leaf-list-after       ok
+leaf-list-move          start         leaf-list-move        ok
+identity-before         start         identity-before       ok
+identity-before-own     start         identity-before-own   ok
+choice-switch           start         choice-switch         ok
+choice-same             start         choice-same           ok
+choice-shorthand        start         choice-shorthand      ok
+choice-two              start         choice-two            multiple-cases
+invalid-mandatory       empty         invalid-mandatory     missing-mandatory
+invalid-range           empty         invalid-range         invalid-value
+state                   empty         state                 invalid-edit

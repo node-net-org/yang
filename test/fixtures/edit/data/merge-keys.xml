@@ -1,0 +1,1 @@
+<sys xmlns="urn:ed"><iface><name>eth</name><unit>1</unit><mtu>9000</mtu></iface><iface><name>eth</name><unit>0</unit><mtu>1400</mtu></iface></sys>

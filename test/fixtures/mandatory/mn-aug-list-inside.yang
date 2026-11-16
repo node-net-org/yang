@@ -1,0 +1,7 @@
+module mn-aug-list-inside {
+  yang-version 1.1;
+  namespace "urn:mn-aug-list-inside";
+  prefix a;
+  import mn-base { prefix b; }
+  augment /b:c { list l { key k; leaf k { type string; } leaf m { type string; mandatory true; } } }
+}

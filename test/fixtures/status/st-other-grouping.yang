@@ -1,0 +1,9 @@
+module st-other-grouping {
+  yang-version 1.1;
+  namespace "urn:st-other-grouping";
+  prefix s;
+
+  import st-base { prefix b; }
+
+  container c { uses b:dg; }
+}

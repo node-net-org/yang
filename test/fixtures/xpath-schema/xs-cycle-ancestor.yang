@@ -1,0 +1,8 @@
+module xs-cycle-ancestor {
+  yang-version 1.1;
+  namespace "urn:xs-cycle-ancestor";
+  prefix t;
+
+  container c { when "../d/y = 'a'"; leaf x { type string; } }
+  container d { leaf y { type string; when "../../c/x = 'a'"; } }
+}

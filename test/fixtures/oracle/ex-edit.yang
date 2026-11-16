@@ -1,0 +1,17 @@
+module ex-edit {
+  yang-version 1.1;
+  namespace "urn:ex-edit";
+  prefix ed;
+  import ex-ids { prefix ids; }
+  description "Edit content (edit-config) for the yanglint oracle: operations and ordered-by-user inserts.";
+
+  container sys {
+    leaf host { type string; }
+    leaf mtu { type uint16; }
+    leaf kind { type identityref { base ids:thing; } }
+    list user { key name; ordered-by user; leaf name { type string; } leaf uid { type uint32; } }
+    leaf-list dns { type string; ordered-by user; }
+    leaf-list kinds { type identityref { base ids:thing; } ordered-by user; }
+    container state { config false; leaf up { type boolean; } }
+  }
+}

@@ -1,0 +1,41 @@
+# One module per case, xs-<case>.yang, with a must or when whose paths are
+# followed through the schema (implemented with xs-base; xs-other is only imported).
+# scripts/yanglint-oracle.sh and scripts/pyang-oracle.sh record what yanglint and
+# pyang say about each; test/compile/xpath-schema.test.ts checks that @node-net/yang
+# reports what is given here, and compares with both.
+#   case  expected: ok or warning:<code>
+ok-container            ok                              # relative, absolute and current() paths in containers
+ok-list                 ok                              # list entries, with a predicate on the key
+ok-choice               ok                              # paths step through choice and case
+ok-augment              ok                              # an augment's when is evaluated from its target; names in the target need its prefix
+ok-grouping             ok                              # a grouping used in two places, right in both
+ok-rpc                  ok                              # RPC input and output see themselves and the datastore
+ok-notification         ok                              # a notification sees its own content and the datastore
+ok-action               ok                              # an action climbs to its list entry
+ok-uses-when            ok                              # a when on uses or on a case is evaluated from the closest data ancestor
+ok-state                ok                              # state data may refer to configuration
+ok-axes                 ok                              # ancestor, descendant and self axes, and a union
+ok-give-up              ok                              # deref(), wildcards, other axes and anydata: nothing to say
+ok-no-cycle             ok                              # whens that depend on each other in a chain, not a cycle
+ok-deviation            ok                              # a name a deviation removed is not reported
+typo                    warning:xpath-unknown-node      # a misspelt name
+typo-predicate          warning:xpath-unknown-node      # a misspelt name in a predicate
+typo-absolute           warning:xpath-unknown-node      # an absolute path to a node that is not there
+choice-name             warning:xpath-unknown-node      # a choice is not a data node
+leaf-child              warning:xpath-unknown-node      # a leaf has no children
+above-root              warning:xpath-unknown-node      # '..' above the root
+descendant              warning:xpath-unknown-node      # a descendant that is not there
+not-implemented         warning:xpath-not-implemented   # a module that is only imported has no data
+state-from-config       warning:xpath-state-from-config # configuration cannot see state data
+output-to-input         warning:xpath-unknown-node      # output cannot see input
+action-typo             warning:xpath-unknown-node      # a misspelt name from inside an action
+notification-uses-when  warning:xpath-unknown-node      # a when on uses in a notification starts from the notification, so '..' leaves it (RFC 6470's netconf-confirmed-commit)
+augment-unprefixed      warning:xpath-unknown-node      # an unprefixed name is in the augmenting module, so the target's x needs its prefix (as in OpenConfig's gnsi modules)
+grouping-one-place      warning:xpath-unknown-node      # a grouping that is right in one place and wrong in another
+unquoted-literal        warning:xpath-unknown-node      # a literal written without quotes is a name (OpenConfig's bgp-policy in SR OS 26.10)
+cycle-2                 warning:when-cycle              # two whens that depend on each other
+cycle-3                 warning:when-cycle              # three whens in a cycle
+cycle-ancestor          warning:when-cycle              # a cycle through the container above the node referred to
+cycle-self              warning:when-cycle              # a when that refers to its own node
+cycle-child             warning:when-cycle              # a when that refers to what is inside its node
+cycle-case              warning:when-cycle              # a cycle through a case

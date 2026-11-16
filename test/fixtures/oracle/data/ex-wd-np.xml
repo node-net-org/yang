@@ -1,0 +1,10 @@
+<top xmlns="urn:ex-wd">
+  <np>
+    <d>true</d>
+    <deeper/>
+  </np>
+  <empty-np/>
+  <ll>1</ll>
+  <ll>2</ll>
+  <g>g</g>
+</top>

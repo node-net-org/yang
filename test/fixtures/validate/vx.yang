@@ -1,0 +1,79 @@
+module vx {
+  yang-version 1.1;
+  namespace "urn:example:vx";
+  prefix vx;
+
+  container c {
+    leaf ratio {
+      type uint8;
+      must ". <= 100" {
+        error-message "ratio is a percentage";
+        error-app-tag "too-big";
+      }
+    }
+    leaf mode {
+      type enumeration { enum simple; enum advanced; }
+      default simple;
+    }
+    leaf advanced-x {
+      when "../mode = 'advanced'";
+      type string;
+    }
+    leaf ref { type leafref { path "../item/name"; } }
+    leaf loose { type leafref { path "../item/name"; require-instance false; } }
+    leaf either {
+      type union {
+        type enumeration { enum none; }
+        type leafref { path "../item/name"; }
+      }
+    }
+    leaf val { type leafref { path "../item[name = current()/../ref]/value"; } }
+    leaf iid { type instance-identifier; }
+    leaf-list tag { type string; max-elements 3; }
+    list item {
+      key name;
+      unique "value sub/x";
+      min-elements 1;
+      must "not(value) or value < 1000" { error-message "value too large"; }
+      leaf name { type string; }
+      leaf value { type uint32; }
+      container sub { leaf x { type string; } }
+    }
+    container np {
+      leaf need { type string; mandatory true; }
+    }
+    container pres {
+      presence "on";
+      leaf need { type string; mandatory true; }
+    }
+    choice how {
+      mandatory true;
+      case one {
+        leaf one-a { type string; }
+        leaf one-b { type string; mandatory true; }
+      }
+      case two {
+        leaf two-a { type string; }
+      }
+    }
+    container st {
+      config false;
+      leaf-list seen { type string; }
+      leaf req { type string; mandatory true; }
+    }
+  }
+
+  rpc go {
+    input {
+      leaf target { type leafref { path "/vx:c/vx:item/vx:name"; } }
+      leaf n { type uint8; mandatory true; must ". > 0"; }
+    }
+    output {
+      leaf res { type string; mandatory true; }
+    }
+  }
+
+  notification ev {
+    leaf why { type string; mandatory true; }
+  }
+}

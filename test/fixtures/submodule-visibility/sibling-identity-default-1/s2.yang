@@ -1,0 +1,11 @@
+submodule s2 {
+  yang-version 1;
+  belongs-to m {
+    prefix m;
+  }
+  include s1;
+
+  identity d {
+    base b;
+  }
+}

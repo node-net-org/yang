@@ -1,0 +1,7 @@
+submodule s1 {
+  yang-version 1;
+  belongs-to m {
+    prefix m;
+  }
+  include s2;
+}
