@@ -313,12 +313,13 @@ npm install
 npm run check
 ```
 
-There is no CI. What gates a change is these checks, run locally before it lands.
+There is no CI for changes: what gates a change is these checks, run locally before it lands. Only releases run on GitHub (below).
 
 - **`npm run check` runs before every landing:** lint, typecheck, tests, build, the CommonJS, portability and pack checks, and last the runtime audit. `npm audit --omit=dev` fails the check on any known vulnerability in the runtime dependencies. If the registry can't be reached, the audit is skipped with a loud warning and the check still passes, so it works offline. `NN_REQUIRE_AUDIT=1` makes that skip a failure.
 - **`npm run check:full`** (`scripts/check-full.sh`) runs `check` with the audit required, then a typecheck with TypeScript 7.0.2, `scripts/check-node.sh 22 24 26` (Docker required), and the full `npm audit`, which is reported but never fails. `--quick` skips the Node.js lines, and `--only ts7,check` runs just the steps named. Run it before landing any change to dependencies or these scripts, and whenever unsure.
 - **Every Node.js LTS line that `engines` allows must pass the whole check.** `scripts/check-node.sh` runs `npm install` and `npm run check` for each line in a clean `node:<line>` container, with a copy of the working tree. When a new line is promoted to LTS, add it to the script's default lines; when one reaches end of life, drop it and raise `engines`.
 - **Updates:** `npm run deps:report` lists outdated dependencies, with in-range updates apart from those needing a range change, and summarises the runtime and full audits.
+- **Releases:** `npm version patch` (or `minor`, `major`), then `git push --follow-tags`. The tag starts `.github/workflows/release.yml`, which runs `check` and publishes to npm through trusted publishing, so no npm token exists anywhere. Each version carries a provenance statement linking it to its commit.
 - `scripts/install-hooks.sh` installs an opt-in git pre-push hook that runs `npm run check` (`--uninstall` removes it).
 - The oracle scripts (`scripts/*-oracle.sh`) compare results with pyang, yanglint and sysrepo in Docker; the tests use their recorded output.
 - [docs/](docs/) holds the maintainer notes: the [design](docs/net-yang-design.md), the [RFC survey](docs/rfcs.md) and the [backlog](docs/backlog.md).

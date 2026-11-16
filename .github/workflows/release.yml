@@ -1,0 +1,38 @@
+# Publishes to npm when a version tag is pushed: `npm version patch` (or minor,
+# major), then `git push --follow-tags`. The tag must match package.json.
+#
+# No token: npm trusts this workflow through OIDC (trusted publishing), set up
+# in the package's settings on npmjs.com for node-net-org/yang and release.yml.
+# npm adds a provenance statement linking each version to its commit.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write # OIDC, for npm trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install --global npm@11.21.2
+      - name: Check the tag matches package.json
+        run: |
+          version="v$(node -p 'require("./package.json").version')"
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME doesn't match package.json ($version)" >&2
+            exit 1
+          fi
+      - run: npm install --no-audit --no-fund
+      - run: npm run check
+        env:
+          NN_REQUIRE_AUDIT: '1'
+      - run: npm publish
